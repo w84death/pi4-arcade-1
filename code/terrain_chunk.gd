@@ -20,7 +20,7 @@ func _init(noise, x, z, chunk_size):
 	
 func _ready():
 	generate_chunk()
-	#generate_water_layer()
+	generate_water_layer()
 	
 func generate_terrain_chunk():
 	var plane_mesh = PlaneMesh.new()
@@ -95,6 +95,7 @@ func generate_water_layer():
 	var mesh_instance = MeshInstance.new()
 	mesh_instance.mesh = plane_mesh
 	mesh_instance.cast_shadow = GeometryInstance.SHADOW_CASTING_SETTING_OFF
+	mesh_instance.translate(Vector3(0,-2,0))
 	if COLLIS:
 		mesh_instance.create_trimesh_collision()
 	

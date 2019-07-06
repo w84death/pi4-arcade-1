@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://code/main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/small/P1X.tscn" type="PackedScene" id=2]
 [ext_resource path="res://flat_env.tres" type="Environment" id=3]
-[ext_resource path="res://scenes/small/P1X.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
@@ -84,7 +84,7 @@ transform = Transform( 0.943326, 0.0847343, -0.320865, 0, 0.966855, 0.255328, 0.
 light_color = Color( 0.984314, 1, 0.839216, 1 )
 light_bake_mode = 2
 
-[node name="camera" parent="." instance=ExtResource( 2 )]
+[node name="camera" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 environment = ExtResource( 3 )
 fov = 110.0
@@ -92,7 +92,7 @@ fov = 110.0
 [node name="effects" parent="camera" index="0"]
 transform = Transform( 1, 0, 0, 4.65661e-10, 1, 0, 0, 1.49012e-08, 1, 0, 0, -0.35 )
 
-[node name="P1X" parent="camera" instance=ExtResource( 4 )]
+[node name="P1X" parent="camera" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 
 [editable path="camera"]
