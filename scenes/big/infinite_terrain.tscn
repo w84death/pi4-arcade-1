@@ -1,0 +1,132 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://code/infinite_terrain.gd" type="Script" id=1]
+[ext_resource path="res://code/main.gd" type="Script" id=2]
+[ext_resource path="res://materials/just_green.material" type="Material" id=3]
+[ext_resource path="res://code/camera_movement.gd" type="Script" id=4]
+[ext_resource path="res://materials/sand_blocks.material" type="Material" id=5]
+[ext_resource path="res://scenes/small/clouds.tscn" type="PackedScene" id=6]
+[ext_resource path="res://swamps_env.tres" type="Environment" id=7]
+[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MotionTrail/MotionTrail.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/small/grass.tscn" type="PackedScene" id=10]
+[ext_resource path="res://materials/water2.material" type="Material" id=12]
+
+[sub_resource type="SphereMesh" id=1]
+material = ExtResource( 5 )
+radius = 0.5
+height = 1.0
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.5
+
+[sub_resource type="PlaneMesh" id=3]
+material = ExtResource( 12 )
+size = Vector2( 64, 64 )
+subdivide_width = 8
+subdivide_depth = 8
+
+[sub_resource type="PlaneMesh" id=4]
+material = ExtResource( 3 )
+size = Vector2( 64, 64 )
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="infinite_terrain" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.987916, -0.154432, 0.0131529, -0.154774, -0.987462, 0.0310444, 0.00819379, -0.032705, -0.999431, 0, 24, 0 )
+light_energy = 4.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_color = Color( 0.0745098, 0.180392, 0.360784, 1 )
+shadow_reverse_cull_face = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 256.0
+script = ExtResource( 2 )
+next_scene_bigfile = "intro"
+
+[node name="player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0 )
+script = ExtResource( 4 )
+flying = true
+
+[node name="MotionTrail" parent="player" instance=ExtResource( 9 )]
+startColor = Color( 1, 0.133333, 0.886275, 1 )
+endColor = Color( 0, 0.207843, 0.823529, 0 )
+
+[node name="body" type="MeshInstance" parent="player"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="rot" type="Spatial" parent="player"]
+
+[node name="camera" parent="player/rot" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 32 )
+environment = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player"]
+shape = SubResource( 2 )
+
+[node name="clouds" parent="player" instance=ExtResource( 6 )]
+transform = Transform( 32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 128, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.269, 12, -25.258 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.731, 12, -25.258 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.970211, -0.242261, 0, 0.242261, 0.970211, 0, 17.13, -18.92 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="grass" parent="MeshInstance2" instance=ExtResource( 10 )]
+
+[node name="loading" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="loading"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0745098, 0.121569, 0.105882, 0.752941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="loading"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -15.0
+margin_right = -149.0
+margin_bottom = 16.0
+rect_scale = Vector2( 2, 1.5 )
+custom_colors/font_color = Color( 0.956863, 0.941176, 0.741176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+text = "generating
+terrain..."
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
