@@ -50,7 +50,7 @@ func load_done(chunk, thread):
 	unready_chunks.erase(key)
 	thread.wait_to_finish()
 	if $player.flying and chunks.size() >= chunk_amount * chunk_amount:
-		$loading.hide()
+		$HUD/loading.hide()
 		$player.flying = false
 	
 func get_chunk(x, z):
@@ -77,8 +77,6 @@ func update_chunks():
 			var chunk = get_chunk(x, z)
 			if chunk != null:
 				chunk.should_remove = false
-
-
 
 func clean_up_chunks():
 	for key in chunks:

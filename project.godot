@@ -27,7 +27,7 @@ boot_splash/bg_color=Color( 0.188235, 0.0784314, 0.290196, 1 )
 [display]
 
 window/size/width=480
-window/size/height=300
+window/size/height=480
 window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -41,11 +41,13 @@ enabled=PoolStringArray(  )
 move_forward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 move_backward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 move_left={
@@ -90,6 +92,6 @@ quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/depth/hdr=false
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://misc/default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
 quality/subsurface_scattering/quality=0

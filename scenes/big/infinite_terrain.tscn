@@ -1,16 +1,18 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://code/infinite_terrain.gd" type="Script" id=1]
 [ext_resource path="res://code/main.gd" type="Script" id=2]
 [ext_resource path="res://materials/just_green.material" type="Material" id=3]
 [ext_resource path="res://code/camera_movement.gd" type="Script" id=4]
 [ext_resource path="res://materials/sand_blocks.material" type="Material" id=5]
-[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://swamps_env.tres" type="Environment" id=7]
-[ext_resource path="res://MotionTrail/MotionTrail.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/small/grass.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/small/clouds.tscn" type="PackedScene" id=10]
+[ext_resource path="res://misc/Awesome.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://misc/swamps_env.tres" type="Environment" id=7]
+[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MotionTrail/MotionTrail.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/small/grass.tscn" type="PackedScene" id=10]
+[ext_resource path="res://code/fps.gd" type="Script" id=11]
 [ext_resource path="res://materials/water2.material" type="Material" id=12]
+[ext_resource path="res://scenes/small/clouds.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SphereMesh" id=1]
 material = ExtResource( 5 )
@@ -34,6 +36,16 @@ size = Vector2( 64, 64 )
 subdivide_width = 32
 subdivide_depth = 32
 
+[sub_resource type="DynamicFont" id=5]
+outline_size = 1
+outline_color = Color( 0.0901961, 0.0588235, 0.0196078, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
 [node name="infinite_terrain" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -54,7 +66,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0 )
 script = ExtResource( 4 )
 flying = true
 
-[node name="MotionTrail" parent="player" instance=ExtResource( 8 )]
+[node name="MotionTrail" parent="player" instance=ExtResource( 9 )]
 startColor = Color( 1, 0.133333, 0.886275, 1 )
 endColor = Color( 0, 0.207843, 0.823529, 0 )
 
@@ -64,16 +76,15 @@ material/0 = null
 
 [node name="rot" type="Spatial" parent="player"]
 
-[node name="camera" parent="player/rot" instance=ExtResource( 6 )]
+[node name="camera" parent="player/rot" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 32 )
 environment = ExtResource( 7 )
 
 [node name="CollisionShape" type="CollisionShape" parent="player"]
 shape = SubResource( 2 )
 
-[node name="clouds" parent="player" instance=ExtResource( 10 )]
-transform = Transform( 32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 128, 0 )
-visible = false
+[node name="clouds" parent="player" instance=ExtResource( 13 )]
+transform = Transform( 32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 64, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.269, 12, -25.258 )
@@ -93,16 +104,24 @@ visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="grass" parent="MeshInstance2" instance=ExtResource( 9 )]
+[node name="grass" parent="MeshInstance2" instance=ExtResource( 10 )]
 
-[node name="loading" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loading" type="Control" parent="HUD"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="loading"]
+[node name="ColorRect" type="ColorRect" parent="HUD/loading"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0745098, 0.121569, 0.105882, 0.752941 )
@@ -110,7 +129,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="loading"]
+[node name="Label" type="Label" parent="HUD/loading"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -129,6 +148,16 @@ initial chunks
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fps" type="Label" parent="HUD"]
+margin_left = 14.0
+margin_top = 6.0
+margin_right = 54.0
+margin_bottom = 20.0
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

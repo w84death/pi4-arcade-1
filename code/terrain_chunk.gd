@@ -5,6 +5,9 @@ export var TERRAIN_HEIGHT = 48
 export var TERRAIN_VERT = .25
 export var GRASS_AMOUNT = 16
 export var COLLIS = true
+export var WATER_LEVEL = -16
+export var GEN_GRASS = false
+
 var mesh_instance
 var noise
 var x
@@ -69,7 +72,8 @@ func generate_chunk():
 	mesh_instance.cast_shadow = GeometryInstance.SHADOW_CASTING_SETTING_OFF
 	
 	add_child(mesh_instance)
-	generate_grass(pool_array)
+	if GEN_GRASS:
+		generate_grass(pool_array)
 
 func generate_grass(pool):
 	var particles = CPUParticles.new()
@@ -91,11 +95,10 @@ func generate_water_layer():
 	plane_mesh.subdivide_width = chunk_size * TERRAIN_VERT
 	plane_mesh.material = preload("res://materials/water2.material")
 	
-
 	var mesh_instance = MeshInstance.new()
 	mesh_instance.mesh = plane_mesh
 	mesh_instance.cast_shadow = GeometryInstance.SHADOW_CASTING_SETTING_OFF
-	mesh_instance.translate(Vector3(0,-2,0))
+	mesh_instance.translate(Vector3(0,WATER_LEVEL,0))
 	if COLLIS:
 		mesh_instance.create_trimesh_collision()
 	
