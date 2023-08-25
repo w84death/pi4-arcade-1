@@ -23,3 +23,6 @@ res://textures/terrain_chunk_noise.tres
 res://textures/green_albedo.tres
 res://scenes/big/terrain_chunk.tscn
 res://scenes/big/grass_test.tscn
+res://code/fps.gd
+res://shaders/amiga.gdshader
+res://materials/amiga.material

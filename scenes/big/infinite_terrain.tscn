@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://code/main.gd" id="2"]
 [ext_resource type="Material" uid="uid://b21mp723m5xbi" path="res://materials/just_green.material" id="3"]
 [ext_resource type="Script" path="res://code/camera_movement.gd" id="4"]
-[ext_resource type="Material" uid="uid://c86b4uaok1pvm" path="res://materials/sand_blocks.material" id="5"]
+[ext_resource type="Material" uid="uid://c7m5cu0vkebr2" path="res://materials/amiga.material" id="4_c7ar1"]
 [ext_resource type="FontFile" uid="uid://dqak2gihdlma0" path="res://misc/Awesome.ttf" id="6"]
 [ext_resource type="PackedScene" uid="uid://c5s0qodb2iunb" path="res://scenes/small/camera.tscn" id="8"]
 [ext_resource type="Script" path="res://code/fps.gd" id="11"]
@@ -28,7 +28,6 @@ volumetric_fog_density = 0.01
 volumetric_fog_sky_affect = 0.358
 
 [sub_resource type="SphereMesh" id="1"]
-material = ExtResource("5")
 radial_segments = 32
 rings = 16
 
@@ -88,6 +87,7 @@ flying = true
 
 [node name="body" type="MeshInstance3D" parent="player"]
 mesh = SubResource("1")
+surface_material_override/0 = ExtResource("4_c7ar1")
 
 [node name="rot" type="Node3D" parent="player"]
 
@@ -152,6 +152,3 @@ offset_top = 6.0
 offset_right = 54.0
 offset_bottom = 20.0
 script = ExtResource("11")
-__meta__ = {
-"_edit_use_anchors_": false
-}
