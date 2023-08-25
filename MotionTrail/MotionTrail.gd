@@ -1,14 +1,14 @@
-extends ImmediateGeometry
+extends ImmediateMesh
 
 var points = []
 var points2 = []
 var lifePoints = []
-export var width = 0.5
-export var motionDelta = 0.1
-export var lifespan = 1.0
-export var scaleTexture = true
-export var startColor = Color(1.0, 1.0, 1.0, 1.0)
-export var endColor = Color(1.0, 1.0, 1.0, 0.0)
+@export var width = 0.5
+@export var motionDelta = 0.1
+@export var lifespan = 1.0
+@export var scaleTexture = true
+@export var startColor = Color(1.0, 1.0, 1.0, 1.0)
+@export var endColor = Color(1.0, 1.0, 1.0, 0.0)
 
 var oldPos
 var fadeCounter
@@ -43,7 +43,7 @@ func _process(delta):
 	var uvOffset = 0
 	for i in range(points.size()):
 		var t = float(i + 1) / points.size()
-		var currColor = startColor.linear_interpolate(endColor, 1 - t)
+		var currColor = startColor.lerp(endColor, 1 - t)
 		set_color(currColor)
 		
 		if scaleTexture:

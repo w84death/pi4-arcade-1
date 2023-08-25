@@ -3,7 +3,7 @@
 [ext_resource path="res://MotionTrail/trailmaterial.tres" type="Material" id=1]
 [ext_resource path="res://MotionTrail/MotionTrail.gd" type="Script" id=2]
 
-[node name="MotionTrail" type="ImmediateGeometry"]
+[node name="MotionTrail" type="ImmediateMesh"]
 
 layers = 1
 material_override = ExtResource( 1 )

@@ -1,163 +1,157 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://dtcsn575p3dwu"]
 
-[ext_resource path="res://code/infinite_terrain.gd" type="Script" id=1]
-[ext_resource path="res://code/main.gd" type="Script" id=2]
-[ext_resource path="res://materials/just_green.material" type="Material" id=3]
-[ext_resource path="res://code/camera_movement.gd" type="Script" id=4]
-[ext_resource path="res://materials/sand_blocks.material" type="Material" id=5]
-[ext_resource path="res://misc/Awesome.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://misc/swamps_env.tres" type="Environment" id=7]
-[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://MotionTrail/MotionTrail.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/small/grass.tscn" type="PackedScene" id=10]
-[ext_resource path="res://code/fps.gd" type="Script" id=11]
-[ext_resource path="res://materials/water2.material" type="Material" id=12]
-[ext_resource path="res://scenes/small/clouds.tscn" type="PackedScene" id=13]
+[ext_resource type="Script" path="res://code/infinite_terrain.gd" id="1"]
+[ext_resource type="Script" path="res://code/main.gd" id="2"]
+[ext_resource type="Material" uid="uid://b21mp723m5xbi" path="res://materials/just_green.material" id="3"]
+[ext_resource type="Script" path="res://code/camera_movement.gd" id="4"]
+[ext_resource type="Material" uid="uid://c86b4uaok1pvm" path="res://materials/sand_blocks.material" id="5"]
+[ext_resource type="FontFile" uid="uid://dqak2gihdlma0" path="res://misc/Awesome.ttf" id="6"]
+[ext_resource type="PackedScene" uid="uid://c5s0qodb2iunb" path="res://scenes/small/camera.tscn" id="8"]
+[ext_resource type="Script" path="res://code/fps.gd" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/small/clouds.tscn" id="13"]
 
-[sub_resource type="SphereMesh" id=1]
-material = ExtResource( 5 )
-radius = 0.5
-height = 1.0
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m28p3"]
+
+[sub_resource type="Sky" id="Sky_rk76o"]
+sky_material = SubResource("PhysicalSkyMaterial_m28p3")
+
+[sub_resource type="Environment" id="Environment_lp7mh"]
+background_mode = 2
+sky = SubResource("Sky_rk76o")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_sky_affect = 0.358
+
+[sub_resource type="SphereMesh" id="1"]
+material = ExtResource("5")
 radial_segments = 32
 rings = 16
 
-[sub_resource type="SphereShape" id=2]
-radius = 0.5
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_vakas"]
+auto_exposure_enabled = true
+frustum_focal_length = 14.0
 
-[sub_resource type="PlaneMesh" id=3]
-material = ExtResource( 12 )
-size = Vector2( 64, 64 )
-subdivide_width = 8
-subdivide_depth = 8
+[sub_resource type="SphereShape3D" id="2"]
 
-[sub_resource type="PlaneMesh" id=4]
-material = ExtResource( 3 )
-size = Vector2( 64, 64 )
+[sub_resource type="PlaneMesh" id="4"]
+material = ExtResource("3")
+size = Vector2(64, 64)
 subdivide_width = 32
 subdivide_depth = 32
 
-[sub_resource type="DynamicFont" id=5]
-outline_size = 1
-outline_color = Color( 0.0901961, 0.0588235, 0.0196078, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 6 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("6")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/glyphs/0/advance = Vector2(0, 0)
+cache/0/16/0/glyphs/0/offset = Vector2(0, 0)
+cache/0/16/0/glyphs/0/size = Vector2(0, 0)
+cache/0/16/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/0/glyphs/0/texture_idx = -1
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/1 = Vector2(0, 0)
+cache/0/16/1/glyphs/0/offset = Vector2(0, 0)
+cache/0/16/1/glyphs/0/size = Vector2(0, 0)
+cache/0/16/1/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/1/glyphs/0/texture_idx = -1
 
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
+[sub_resource type="Theme" id="6"]
+default_font = SubResource("5")
 
-[node name="infinite_terrain" type="Spatial"]
-script = ExtResource( 1 )
+[node name="infinite_terrain" type="Node3D"]
+script = ExtResource("1")
 
-[node name="sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.994299, -0.0910206, 0.0555397, -0.0987355, -0.982606, 0.157279, 0.040258, -0.161866, -0.985991, 0, 24, 0 )
-light_color = Color( 0.933333, 0.898039, 0.827451, 1 )
-light_energy = 3.0
-light_bake_mode = 2
-shadow_color = Color( 0.0745098, 0.180392, 0.360784, 1 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lp7mh")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.994299, -0.0910206, 0.0555397, -0.0987355, -0.982606, 0.157279, 0.040258, -0.161866, -0.985991, -0.414028, 24.5693, -1.76429)
+shadow_enabled = true
 shadow_reverse_cull_face = true
-directional_shadow_mode = 0
+directional_shadow_blend_splits = true
 directional_shadow_max_distance = 256.0
-script = ExtResource( 2 )
+script = ExtResource("2")
 next_scene_bigfile = "intro"
 
-[node name="player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0 )
-script = ExtResource( 4 )
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0)
+script = ExtResource("4")
 flying = true
 
-[node name="MotionTrail" parent="player" instance=ExtResource( 9 )]
-startColor = Color( 1, 0.133333, 0.886275, 1 )
-endColor = Color( 0, 0.207843, 0.823529, 0 )
+[node name="body" type="MeshInstance3D" parent="player"]
+mesh = SubResource("1")
 
-[node name="body" type="MeshInstance" parent="player"]
-mesh = SubResource( 1 )
-material/0 = null
+[node name="rot" type="Node3D" parent="player"]
 
-[node name="rot" type="Spatial" parent="player"]
+[node name="camera" parent="player/rot" instance=ExtResource("8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23707, 9.77968)
+attributes = SubResource("CameraAttributesPhysical_vakas")
 
-[node name="camera" parent="player/rot" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 32 )
-environment = ExtResource( 7 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("2")
 
-[node name="CollisionShape" type="CollisionShape" parent="player"]
-shape = SubResource( 2 )
+[node name="clouds" parent="player" instance=ExtResource("13")]
+transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 64, 0)
 
-[node name="clouds" parent="player" instance=ExtResource( 13 )]
-transform = Transform( 32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 64, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.269, 12, -25.258 )
+[node name="MeshInstance2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.985091, 0.172032, 0, -0.172032, 0.985091, 0, 14.9151, -18.92)
 visible = false
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="MeshInstance3" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.731, 12, -25.258 )
-visible = false
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.970211, -0.242261, 0, 0.242261, 0.970211, 0, 17.13, -18.92 )
-visible = false
-mesh = SubResource( 4 )
-material/0 = null
-
-[node name="grass" parent="MeshInstance2" instance=ExtResource( 10 )]
+mesh = SubResource("4")
 
 [node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("6")
 
 [node name="loading" type="Control" parent="HUD"]
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="HUD/loading"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0745098, 0.121569, 0.105882, 0.752941 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0.0745098, 0.121569, 0.105882, 0.752941)
 
 [node name="Label" type="Label" parent="HUD/loading"]
+layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -15.0
-margin_right = -241.0
-margin_bottom = 50.0
-rect_scale = Vector2( 2, 1.5 )
-custom_colors/font_color = Color( 0.956863, 0.941176, 0.741176, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 1
+offset_top = -15.0
+offset_right = -241.0
+offset_bottom = 50.0
+scale = Vector2(2, 1.5)
+theme_override_colors/font_color = Color(0.956863, 0.941176, 0.741176, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
 text = "generating
 initial chunks
 
 ..."
-align = 1
-valign = 1
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fps" type="Label" parent="HUD"]
-margin_left = 14.0
-margin_top = 6.0
-margin_right = 54.0
-margin_bottom = 20.0
-script = ExtResource( 11 )
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 20.0
+script = ExtResource("11")
 __meta__ = {
 "_edit_use_anchors_": false
 }

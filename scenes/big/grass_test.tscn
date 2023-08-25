@@ -1,29 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://lkdp785as6qa"]
 
-[ext_resource path="res://materials/just_green.material" type="Material" id=1]
-[ext_resource path="res://models/grass.mesh" type="ArrayMesh" id=2]
-[ext_resource path="res://scenes/small/camera.tscn" type="PackedScene" id=3]
+[ext_resource type="Material" uid="uid://b21mp723m5xbi" path="res://materials/just_green.material" id="1"]
+[ext_resource type="ArrayMesh" path="res://models/grass.mesh" id="2"]
+[ext_resource type="PackedScene" uid="uid://c5s0qodb2iunb" path="res://scenes/small/camera.tscn" id="3"]
 
-[sub_resource type="PlaneMesh" id=1]
-material = ExtResource( 1 )
-size = Vector2( 64, 64 )
+[sub_resource type="PlaneMesh" id="1"]
+material = ExtResource("1")
+size = Vector2(64, 64)
 
-[node name="grass_test" type="Spatial"]
+[node name="grass_test" type="Node3D"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.809565, 0.587031, 0, -0.587031, 0.809565, 0, 4.24511, 0 )
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.809565, 0.587031, 0, -0.587031, 0.809565, 0, 4.24511, 0)
 shadow_enabled = true
 
-[node name="camera" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.781749, 0.168116, -0.600504, 0, 0.962975, 0.269592, 0.623593, -0.210753, 0.752805, -5.13842, 2.98195, 7.39008 )
+[node name="camera" parent="." instance=ExtResource("3")]
+transform = Transform3D(0.781749, 0.168116, -0.600504, 0, 0.962975, 0.269592, 0.623593, -0.210753, 0.752805, -5.13842, 2.98195, 7.39008)
 
-[node name="terrain" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
-material/0 = null
+[node name="terrain" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
 
-[node name="CPUParticles" type="CPUParticles" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 24
-mesh = ExtResource( 2 )
+mesh = ExtResource("2")
 emission_shape = 2
-emission_box_extents = Vector3( 8, 0.1, 8 )
+emission_sphere_radius = 1.0

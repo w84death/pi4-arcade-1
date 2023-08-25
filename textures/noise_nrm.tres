@@ -1,15 +1,13 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://bmrl6s4urf0p6"]
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="FastNoiseLite" id="1"]
 seed = 2
-period = 26.0
-persistence = 0.579
-lacunarity = 2.04
+frequency = 0.0082
 
 [resource]
-flags = 15
-width = 128
-height = 128
+in_3d_space = true
 seamless = true
-as_normalmap = true
-noise = SubResource( 1 )
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 16.0
+noise = SubResource("1")
