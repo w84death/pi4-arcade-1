@@ -2,6 +2,7 @@
 
 [sub_resource type="FastNoiseLite" id="1"]
 seed = 14
+frequency = 0.002
 fractal_lacunarity = 2.035
 fractal_gain = 0.725
 

@@ -1,8 +1,8 @@
 extends Node3D
 class_name Chunk
 
-@export var TERRAIN_HEIGHT = 48
-@export var TERRAIN_VERT = 0.2
+@export var TERRAIN_HEIGHT = 192
+@export var TERRAIN_VERT = 0.1
 @export var COLLIS = true
 
 var mesh_instance

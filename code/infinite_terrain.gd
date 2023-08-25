@@ -1,9 +1,9 @@
 extends Node3D
 
 var noise
-@export var chunk_size = 48
+@export var chunk_size = 512
 @export var chunk_amount = 8
-@export var n_seed = 1337
+@export var n_seed = 7
 @export var n_octaves = 3
 @export var n_period = 180
 @export var n_persistence = 0.4
@@ -17,10 +17,10 @@ func _ready():
 	randomize()
 	noise = FastNoiseLite.new()
 	noise.seed = n_seed
-	noise.frequency = 0.002
+	noise.frequency = 0.001
 	noise.fractal_type = FastNoiseLite.FRACTAL_FBM
-	noise.fractal_gain = 0.1
-	noise.fractal_lacunarity = 0.1
+	noise.fractal_gain = 0.01
+	noise.fractal_lacunarity = 4
 	
 	thread = Thread.new()
 	

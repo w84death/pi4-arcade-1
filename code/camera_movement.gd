@@ -2,11 +2,11 @@ extends CharacterBody3D
 
 const GRAVITY = -24.8
 var vel = Vector3()
-const MAX_SPEED = 24
+const MAX_SPEED = 90
 const JUMP_SPEED = 18
 const ACCEL = 4.5
 
-@export var flying = false
+@export var flying = true
 
 var dir = Vector3()
 
@@ -37,8 +37,8 @@ func process_input(delta):
 
 	var input_movement_vector = Vector2()
 	
-	#if not flying:
-	#    input_movement_vector.y += 1
+	if flying:
+		input_movement_vector.y += 1
 
 	if Input.is_action_pressed("move_forward"):
 		input_movement_vector.y += 1
@@ -59,10 +59,12 @@ func process_input(delta):
 
 	# ----------------------------------
 	# Jumping
-	if is_on_floor():
+	if is_on_floor() and not flying:
 		if Input.is_action_just_pressed("move_jump"):
 			vel.y = JUMP_SPEED
-
+	if flying:
+		if Input.is_action_just_pressed("move_jump"):
+			vel.y = 50
  
 	# ----------------------------------
 	# Capturing/Freeing the cursor

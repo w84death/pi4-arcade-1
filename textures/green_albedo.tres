@@ -7,9 +7,10 @@ colors = PackedColorArray(0.108635, 0.276864, 0.181778, 1, 0.325379, 0.363998, 0
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pb0x8"]
 seed = 720
 frequency = 0.004
+domain_warp_enabled = true
 
 [resource]
 seamless = true
-seamless_blend_skirt = 1.0
+seamless_blend_skirt = 0.574
 color_ramp = SubResource("Gradient_hbcpw")
 noise = SubResource("FastNoiseLite_pb0x8")

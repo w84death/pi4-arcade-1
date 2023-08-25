@@ -20,7 +20,6 @@ boot_splash/bg_color=Color(0.188235, 0.0784314, 0.290196, 1)
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
-window/stretch/scale=4.0
 window/size/fullscreen=true
 
 [editor_plugins]
@@ -74,7 +73,7 @@ fly={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=3
+textures/canvas_textures/default_texture_filter=2
 textures/canvas_textures/default_texture_repeat=1
 environment/defaults/default_environment="res://misc/default_env.tres"
 quality/driver/driver_name="GLES2"

@@ -3,11 +3,10 @@
 [sub_resource type="FastNoiseLite" id="1"]
 seed = 2
 frequency = 0.0082
+domain_warp_enabled = true
 
 [resource]
 in_3d_space = true
 seamless = true
-seamless_blend_skirt = 1.0
 as_normal_map = true
-bump_strength = 16.0
 noise = SubResource("1")

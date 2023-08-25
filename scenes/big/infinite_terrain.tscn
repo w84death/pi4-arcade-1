@@ -27,9 +27,7 @@ glow_enabled = true
 volumetric_fog_density = 0.01
 volumetric_fog_sky_affect = 0.358
 
-[sub_resource type="SphereMesh" id="1"]
-radial_segments = 32
-rings = 16
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hl7bc"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_vakas"]
 auto_exposure_enabled = true
@@ -83,23 +81,22 @@ next_scene_bigfile = "intro"
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0)
 script = ExtResource("4")
-flying = true
 
 [node name="body" type="MeshInstance3D" parent="player"]
-mesh = SubResource("1")
+mesh = SubResource("CapsuleMesh_hl7bc")
 surface_material_override/0 = ExtResource("4_c7ar1")
 
 [node name="rot" type="Node3D" parent="player"]
 
 [node name="camera" parent="player/rot" instance=ExtResource("8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23707, 9.77968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98733, 7.67164)
 attributes = SubResource("CameraAttributesPhysical_vakas")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("2")
 
 [node name="clouds" parent="player" instance=ExtResource("13")]
-transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 64, 0)
+transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 192, 0)
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.985091, 0.172032, 0, -0.172032, 0.985091, 0, 14.9151, -18.92)
