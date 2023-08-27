@@ -3,7 +3,7 @@ extends Node3D
 var noise
 @export var chunk_size = 512
 @export var chunk_amount = 8
-@export var n_seed = 7
+@export var n_seed = 123
 @export var n_octaves = 3
 @export var n_period = 180
 @export var n_persistence = 0.4

@@ -1,17 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://crvvbnhf3vtit"]
 
-[ext_resource path="res://materials/clouds.material" type="Material" id=1]
-
-[sub_resource type="PlaneMesh" id=6]
-material = ExtResource( 1 )
-size = Vector2( 256, 256 )
+[ext_resource type="PlaneMesh" uid="uid://m3bc40f1emjp" path="res://models/cloud_quad.tres" id="1_7mfol"]
 
 [node name="clouds" type="MeshInstance3D"]
-transform = Transform3D( 16, 0, 0, 0, 1, 0, 0, 0, 16, -1.45, 241.1, -3.62 )
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, -1.45, 241.1, -3.62)
 cast_shadow = 0
 extra_cull_margin = 256.0
-mesh = SubResource( 6 )
-material/0 = null
-__meta__ = {
-"_edit_lock_": true
-}
+mesh = ExtResource("1_7mfol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-11.8158, 0, 29.7386, 0, 32, 0, -29.7386, 0, -11.8158, 0, 64, 0)
+mesh = ExtResource("1_7mfol")

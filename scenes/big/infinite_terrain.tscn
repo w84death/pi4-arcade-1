@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dqak2gihdlma0" path="res://misc/Awesome.ttf" id="6"]
 [ext_resource type="PackedScene" uid="uid://c5s0qodb2iunb" path="res://scenes/small/camera.tscn" id="8"]
 [ext_resource type="Script" path="res://code/fps.gd" id="11"]
-[ext_resource type="PackedScene" path="res://scenes/small/clouds.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://crvvbnhf3vtit" path="res://scenes/small/clouds.tscn" id="13"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m28p3"]
 
@@ -78,8 +78,12 @@ directional_shadow_max_distance = 256.0
 script = ExtResource("2")
 next_scene_bigfile = "intro"
 
+[node name="clouds" parent="." instance=ExtResource("13")]
+transform = Transform3D(64, 0, 0, 0, 2, 0, 0, 0, 64, 0, 314.294, 0)
+skeleton = NodePath("../player")
+
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 412.915, 0)
 script = ExtResource("4")
 
 [node name="body" type="MeshInstance3D" parent="player"]
@@ -94,9 +98,6 @@ attributes = SubResource("CameraAttributesPhysical_vakas")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("2")
-
-[node name="clouds" parent="player" instance=ExtResource("13")]
-transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 192, 0)
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.985091, 0.172032, 0, -0.172032, 0.985091, 0, 14.9151, -18.92)

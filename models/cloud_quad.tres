@@ -1,0 +1,7 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://m3bc40f1emjp"]
+
+[ext_resource type="Material" uid="uid://dv4lh8042b5lj" path="res://materials/clouds.material" id="1_fmc26"]
+
+[resource]
+material = ExtResource("1_fmc26")
+size = Vector2(256, 256)
